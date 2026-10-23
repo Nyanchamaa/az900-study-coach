@@ -62,4 +62,47 @@ You need a modern web browser and a code editor such as Visual Studio Code.
    code .
    ```
 
-4. Open `index.html` in
+4. Open `index.html` in your browser.
+
+   Alternatively, install the Live Server extension in VS Code and select **Open with Live Server**.
+
+## 🧠 How It Works
+
+1. The learner enters their exam date, daily study availability, and confidence level.
+2. The application displays a dashboard with estimated readiness and domain scores.
+3. The learner completes practice questions and receives feedback.
+4. Correct and incorrect answers adjust the relevant domain score.
+5. The dashboard identifies the lowest-scoring domain and recommends it for the next study session.
+6. Progress is stored locally in the browser.
+
+## ⚠️ Current Limitations
+
+This is a front-end prototype. It currently uses a small, predefined question bank and simplified score-adjustment rules.
+
+- Readiness scores are illustrative estimates, not official Microsoft exam predictions.
+- Progress is stored locally and is not synchronized across devices.
+- There is no user authentication or cloud database.
+- Recommendations use rule-based logic rather than a trained AI model.
+- Practice questions cover only a limited selection of AZ-900 topics.
+
+## 🔮 Future Improvements
+
+- Expand the question bank to cover the complete AZ-900 exam syllabus.
+- Incorporate the current official Microsoft exam objectives.
+- Develop a more robust performance-based recommendation algorithm.
+- Add study reminders and a daily revision calendar.
+- Introduce user accounts and cloud-based progress synchronization.
+- Add analytics to track improvement over time.
+- Integrate curated learning resources for each domain.
+
+## 🎯 Project Objective
+
+The objective of AZ-900 Study Coach is to demonstrate how web technologies can be used to build a personalized learning tool that helps learners allocate study time more effectively and focus on areas where they need improvement.
+
+## 📄 License
+
+This project is available for educational and portfolio purposes. A formal open-source license can be added if the project is released for reuse.
+
+---
+
+**Disclaimer:** AZ-900 Study Coach is an independent learning project and is not affiliated with or endorsed by Microsoft.
