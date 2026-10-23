@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AZ-900 Study Coach</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="navbar">
+    <a href="#" class="logo">AZ-900 <span>Study Coach</span></a>
+    <span class="status">PERSONALIZED LEARNING</span>
+</header>
+
+<main>
+    <!-- Landing page -->
+    <section id="home" class="screen active">
+        <div class="hero">
+            <div class="hero-content">
+                <span class="eyebrow">YOUR PERSONAL AZURE LEARNING COMPANION</span>
+                <h1>Study smarter.<br><span>Know what comes next.</span></h1>
+                <p>
+                    Preparing for AZ-900 while balancing classes, work and life?
+                    Get a personalized study plan that adapts to your performance.
+                </p>
+                <button class="btn primary" onclick="showScreen('setup')">
+                    Build my study plan →
+                </button>
+            </div>
+
+            <div class="preview card">
+                <span class="eyebrow">YOUR READINESS</span>
+                <div class="readiness">68%</div>
+                <div class="progress"><div style="width:68%"></div></div>
+                <p class="muted">Illustrative starting score</p>
+                <hr>
+                <div class="preview-row">
+                    <span>Cloud concepts</span><strong>82%</strong>
+                </div>
+                <div class="preview-row">
+                    <span>Azure services</span><strong>61%</strong>
+                </div>
+                <div class="preview-row">
+                    <span>Management & governance</span><strong>54%</strong>
+                </div>
+                <div class="preview-row">
+                    <span>Security</span><strong>72%</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="feature-grid">
+            <article class="card">
+                <span class="feature-icon">01</span>
+                <h3>Assess</h3>
+                <p>Tell us your exam date and available study time.</p>
+            </article>
+            <article class="card">
+                <span class="feature-icon">02</span>
+                <h3>Identify gaps</h3>
+                <p>Use practice questions to discover weaker areas.</p>
+            </article>
+            <article class="card">
+                <span class="feature-icon">03</span>
+                <h3>Adapt</h3>
+                <p>Get a new recommendation based on your results.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- Setup -->
+    <section id="setup" class="screen">
+        <div class="page-heading">
+            <span class="eyebrow">STEP 01 · PERSONALIZATION</span>
+            <h1>Let's plan your preparation.</h1>
+            <p>Your plan starts with your schedule and confidence.</p>
+        </div>
+
+        <form id="setupForm" class="card form-card">
+            <label for="examDate">When is your exam?</label>
+            <input type="date" id="examDate" required>
+
+            <label for="studyMinutes">How much time can you study daily?</label>
+            <select id="studyMinutes">
+                <option value="20">20 minutes</option>
+                <option value="30">30 minutes</option>
+                <option value="45" selected>45 minutes</option>
+                <option value="60">1 hour</option>
+                <option value="90">1.5 hours</option>
+            </select>
+
+            <label for="confidence">How confident are you about AZ-900?</label>
+            <select id="confidence">
+                <option value="1">Low — I'm just starting</option>
+                <option value="2" selected>Medium — I know some topics</option>
+                <option value="3">High — I know most topics</option>
+            </select>
+
+            <button class="btn primary" type="submit">Generate my plan →</button>
+        </form>
+    </section>
+
+    <!-- Dashboard -->
+    <section id="dashboard" class="screen">
+        <div class="page-heading dashboard-heading">
+            <div>
+                <span class="eyebrow">YOUR LEARNING DASHBOARD</span>
+                <h1>Your next steps.</h1>
+                <p id="examCountdown">Your personalized plan is ready.</p>
+            </div>
+            <button class="btn primary" onclick="startQuiz()">Take practice quiz →</button>
+        </div>
+
+        <div class="stats-grid">
+            <article class="card stat">
+                <p>READINESS SCORE</p>
+                <h2 id="readiness">68%</h2>
+                <div class="progress"><div id="readinessProgress" style="width:68%"></div></div>
+            </article>
+            <article class="card stat">
+                <p>DAILY STUDY TIME</p>
+                <h2 id="dailyTime">45 min</h2>
+                <span class="muted">Your selected availability</span>
+            </article>
+            <article class="card stat">
+                <p>PRIORITY DOMAIN</p>
+                <h2 class="priority" id="priorityDomain">Azure services</h2>
+                <span class="muted">Based on current scores</span>
+            </article>
+        </div>
+
+        <div class="dashboard-grid">
+            <article class="card">
+                <span class="eyebrow">RECOMMENDED SESSION</span>
+                <h2 id="sessionTitle">Review Azure Management & Governance</h2>
+                <p id="sessionReason">
+                    Your weakest domain receives more attention in the next session.
+                </p>
+                <div class="session-list">
+                    <div><span>01</span> Review the topic using learning materials</div>
+                    <div><span>02</span> Answer practice questions</div>
+                    <div><span>03</span> Review mistakes and try again</div>
+                </div>
+                <button class="btn primary" onclick="startQuiz()">Start learning session</button>
+            </article>
+
+            <article class="card">
+                <span class="eyebrow">DOMAIN BREAKDOWN</span>
+                <h2>Your progress</h2>
+                <div id="domainList"></div>
+            </article>
+        </div>
+
+        <article class="recommendation">
+            <div class="recommendation-icon">!</div>
+            <div>
+                <span class="eyebrow">WHY THIS RECOMMENDATION?</span>
+                <p id="recommendationText">The lowest-scoring domain is prioritized.</p>
+            </div>
+        </article>
+    </section>
+
+    <!-- Quiz -->
+    <section id="quiz" class="screen">
+        <div class="quiz-wrapper">
+            <span class="eyebrow" id="questionCount">QUESTION 1</span>
+            <h1>Check your understanding.</h1>
+            <p>Answer the question to update your learning profile.</p>
+
+            <article class="card quiz-card">
+                <h2 id="questionText"></h2>
+                <div id="answerOptions"></div>
+                <p id="feedback" aria-live="polite"></p>
+                <button id="nextQuestion" class="btn primary" onclick="nextQuestion()">
+                    Next question →
+                </button>
+            </article>
+            <button class="btn secondary back-btn" onclick="showScreen('dashboard')">
+                ← Back to dashboard
+            </button>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>AZ-900 Study Coach · Learn with intention.</p>
+    <p class="muted">Prototype demonstration. Readiness scores are estimates, not official exam predictions.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
